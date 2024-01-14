@@ -1,9 +1,7 @@
-[gd_scene load_steps=13 format=3 uid="uid://6pgl1pt35txy"]
+[gd_scene load_steps=5 format=3 uid="uid://6pgl1pt35txy"]
 
 [ext_resource type="PackedScene" uid="uid://dlwrtjnr6xty4" path="res://scenes/UI/BlessingUnitUI.tscn" id="1_q4qay"]
 [ext_resource type="PackedScene" uid="uid://b3llop6ts804d" path="res://scenes/GameManager.tscn" id="2_k8vnu"]
-[ext_resource type="Texture2D" uid="uid://bbuo3vy70oprq" path="res://icon.svg" id="4_h0suf"]
-[ext_resource type="Script" path="res://scripts/trait.gd" id="4_vco4w"]
 
 [sub_resource type="Gradient" id="Gradient_dvckn"]
 offsets = PackedFloat32Array(1)
@@ -11,48 +9,6 @@ colors = PackedColorArray(0.2622, 0.59018, 0.69, 1)
 
 [sub_resource type="GradientTexture1D" id="GradientTexture1D_mdlhv"]
 gradient = SubResource("Gradient_dvckn")
-
-[sub_resource type="Resource" id="Resource_uay8p"]
-script = ExtResource("4_vco4w")
-name = "Is having a good day"
-image = ExtResource("4_h0suf")
-add_modifier = 10
-mul_modifier = 1.0
-
-[sub_resource type="Resource" id="Resource_inf3w"]
-script = ExtResource("4_vco4w")
-name = "Has a pastor father"
-image = ExtResource("4_h0suf")
-add_modifier = 0
-mul_modifier = 1.5
-
-[sub_resource type="Resource" id="Resource_a4kbm"]
-script = ExtResource("4_vco4w")
-name = "Is an optimist"
-image = ExtResource("4_h0suf")
-add_modifier = 0
-mul_modifier = 2.0
-
-[sub_resource type="Resource" id="Resource_t1r71"]
-script = ExtResource("4_vco4w")
-name = "Has a pastor father, but hates him"
-image = ExtResource("4_h0suf")
-add_modifier = 0
-mul_modifier = 1.0
-
-[sub_resource type="Resource" id="Resource_oqt3y"]
-script = ExtResource("4_vco4w")
-name = "Spilled his coffee just now"
-image = ExtResource("4_h0suf")
-add_modifier = -20
-mul_modifier = 1.0
-
-[sub_resource type="Resource" id="Resource_xxysg"]
-script = ExtResource("4_vco4w")
-name = "Widower"
-image = ExtResource("4_h0suf")
-add_modifier = 0
-mul_modifier = 0.7
 
 [node name="Main" type="Node2D"]
 
@@ -63,5 +19,3 @@ texture = SubResource("GradientTexture1D_mdlhv")
 
 [node name="GameManager" parent="." instance=ExtResource("2_k8vnu")]
 unit_ui_scene = ExtResource("1_q4qay")
-possible_positive_traits = Array[ExtResource("4_vco4w")]([SubResource("Resource_uay8p"), SubResource("Resource_inf3w"), SubResource("Resource_a4kbm")])
-possible_negative_traits = Array[ExtResource("4_vco4w")]([SubResource("Resource_t1r71"), SubResource("Resource_oqt3y"), SubResource("Resource_xxysg")])

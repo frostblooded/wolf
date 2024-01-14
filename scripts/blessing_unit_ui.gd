@@ -12,32 +12,23 @@ func on_bless_button_pressed(bless_amount: int):
     var bless_multiplier: float = 1
 
     for t in unit.positive_traits:
-        if is_equal_approx(t.mul_modifier, 1.0):
-            print("Trait %s: x%.2f" % [t.name, t.mul_modifier])
-
         bless_multiplier *= t.mul_modifier
-
-        if !is_equal_approx(t.add_modifier, 0.0):
-            print("Trait %s: %d" % [t.name, t.add_modifier])
-
         total_strength += t.add_modifier
 
     for t in unit.negative_traits:
-        if is_equal_approx(t.mul_modifier, 1.0):
-            print("Trait %s: x%.2f" % [t.name, t.mul_modifier])
-
         bless_multiplier *= t.mul_modifier
-
-        if !is_equal_approx(t.add_modifier, 0.0):
-            print("Trait %s: %d" % [t.name, t.add_modifier])
-
         total_strength += t.add_modifier
 
     total_strength += bless_amount * bless_multiplier
-    print("Total strength: %f" % total_strength)
+
+    var unit_image_ui: UnitImageUI = find_child("UnitImageUI")
+    unit_image_ui.show_animated_bless_results(unit, bless_amount, total_strength)
 
 func initialize(u: Unit):
     self.unit = u
+
+    var current_strength_label: Label = find_child("CurrentStrengthLabel")
+    current_strength_label.text = "Base strength: %d" % unit.strength
 
     var positive_traits_container: Control = find_child("PositiveTraitsContainer")
     var negative_traits_container: Control = find_child("NegativeTraitsContainer")

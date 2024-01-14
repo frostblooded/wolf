@@ -1,8 +1,8 @@
-[gd_scene load_steps=8 format=3 uid="uid://dlwrtjnr6xty4"]
+[gd_scene load_steps=7 format=3 uid="uid://dlwrtjnr6xty4"]
 
 [ext_resource type="Script" path="res://scripts/blessing_unit_ui.gd" id="1_pou5w"]
 [ext_resource type="PackedScene" uid="uid://ddsydqanfd6d6" path="res://scenes/UI/TraitUI.tscn" id="2_3e3qa"]
-[ext_resource type="Texture2D" uid="uid://c0b0sawfyqtac" path="res://aseprite/fighter.png" id="2_mwhvl"]
+[ext_resource type="PackedScene" uid="uid://snfxfvpxmei8" path="res://scenes/UI/UnitImageUI.tscn" id="3_3xt8s"]
 [ext_resource type="Script" path="res://scripts/blessing_input.gd" id="3_ro0nv"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_fri2f"]
@@ -16,8 +16,6 @@ corner_radius_top_left = 25
 corner_radius_top_right = 25
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_wbhf4"]
-
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ym2cl"]
 
 [node name="BlessingUnitUI" type="CanvasLayer"]
 script = ExtResource("1_pou5w")
@@ -81,18 +79,8 @@ theme_type_variation = &"HeaderMedium"
 theme_override_colors/font_color = Color(0.568627, 0.141176, 0.141176, 1)
 text = "Bad traits"
 
-[node name="RightPanelContainer" type="PanelContainer" parent="MarginContainer/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer"]
+[node name="UnitImageUI" parent="MarginContainer/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer" instance=ExtResource("3_3xt8s")]
 layout_mode = 2
-size_flags_horizontal = 3
-theme_override_styles/panel = SubResource("StyleBoxEmpty_ym2cl")
-
-[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/RightPanelContainer"]
-layout_mode = 2
-
-[node name="TextureRect" type="TextureRect" parent="MarginContainer/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/RightPanelContainer/MarginContainer"]
-layout_mode = 2
-texture = ExtResource("2_mwhvl")
-stretch_mode = 5
 
 [node name="CurrentStrengthLabel" type="Label" parent="MarginContainer/PanelContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2
