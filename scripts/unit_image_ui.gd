@@ -29,6 +29,7 @@ func show_animated_bless_results(unit: Unit, bless_strength: int, total_strength
 
 func _on_bless_result_spawn_delay_timeout():
     if bless_results.is_empty():
+        MessageBus.UNIT_BLESSING_DONE.emit()
         $BlessResultSpawnDelay.stop()
         return
 

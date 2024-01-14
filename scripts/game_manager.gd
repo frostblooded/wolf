@@ -3,15 +3,21 @@ extends Node2D
 @export var unit_ui_scene: PackedScene = null
 @export var possible_positive_traits: Array[Trait] = []
 @export var possible_negative_traits: Array[Trait] = []
+var current_unit_ui: BlessingUnitUI = null
 
 func _ready():
 	show_unit()
+	MessageBus.UNIT_BLESSING_DONE.connect(on_unit_blessing_done)
+
+func on_unit_blessing_done():
+	current_unit_ui.queue_free()
+	show_unit()
 
 func show_unit():
-	var unit_ui: BlessingUnitUI = unit_ui_scene.instantiate() as BlessingUnitUI
+	current_unit_ui = unit_ui_scene.instantiate() as BlessingUnitUI
 	var unit: Unit = generate_unit()
-	unit_ui.initialize(unit)
-	get_tree().root.add_child.call_deferred(unit_ui)
+	current_unit_ui.initialize(unit)
+	get_tree().root.add_child.call_deferred(current_unit_ui)
 
 func generate_unit() -> Unit:
 	var unit: Unit = Unit.new()
