@@ -2,3 +2,5 @@
 
 [resource]
 HBoxContainer/constants/separation = 15
+RoundResultLabel/base_type = &"Label"
+RoundResultLabel/font_sizes/font_size = 50

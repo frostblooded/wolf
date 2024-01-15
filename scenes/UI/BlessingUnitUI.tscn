@@ -2,8 +2,8 @@
 
 [ext_resource type="Script" path="res://scripts/blessing_unit_ui.gd" id="1_pou5w"]
 [ext_resource type="PackedScene" uid="uid://ddsydqanfd6d6" path="res://scenes/UI/TraitUI.tscn" id="2_3e3qa"]
-[ext_resource type="PackedScene" uid="uid://snfxfvpxmei8" path="res://scenes/UI/UnitImageUI.tscn" id="3_3xt8s"]
 [ext_resource type="Script" path="res://scripts/blessing_input.gd" id="3_ro0nv"]
+[ext_resource type="Texture2D" uid="uid://c0b0sawfyqtac" path="res://aseprite/fighter.png" id="3_t5euq"]
 [ext_resource type="Texture2D" uid="uid://bbuo3vy70oprq" path="res://icon.svg" id="5_b4pj3"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_fri2f"]
@@ -54,39 +54,47 @@ layout_mode = 2
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="LeftPanelContainer" type="PanelContainer" parent="MarginContainer/PanelContainer/MarginContainer/HBoxContainer/VBoxContainer"]
+[node name="TraitPanelContainer" type="PanelContainer" parent="MarginContainer/PanelContainer/MarginContainer/HBoxContainer/VBoxContainer"]
 layout_mode = 2
-size_flags_horizontal = 3
+size_flags_horizontal = 4
 size_flags_vertical = 3
 theme_override_styles/panel = SubResource("StyleBoxEmpty_wbhf4")
 
-[node name="VBoxContainer3" type="VBoxContainer" parent="MarginContainer/PanelContainer/MarginContainer/HBoxContainer/VBoxContainer/LeftPanelContainer"]
+[node name="VBoxContainer3" type="VBoxContainer" parent="MarginContainer/PanelContainer/MarginContainer/HBoxContainer/VBoxContainer/TraitPanelContainer"]
 layout_mode = 2
 size_flags_horizontal = 4
 theme_override_constants/separation = 30
 alignment = 1
 
-[node name="PositiveTraitsContainer" type="VBoxContainer" parent="MarginContainer/PanelContainer/MarginContainer/HBoxContainer/VBoxContainer/LeftPanelContainer/VBoxContainer3"]
+[node name="PositiveTraitsContainer" type="VBoxContainer" parent="MarginContainer/PanelContainer/MarginContainer/HBoxContainer/VBoxContainer/TraitPanelContainer/VBoxContainer3"]
 layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 4
 
-[node name="Label" type="Label" parent="MarginContainer/PanelContainer/MarginContainer/HBoxContainer/VBoxContainer/LeftPanelContainer/VBoxContainer3/PositiveTraitsContainer"]
+[node name="Label" type="Label" parent="MarginContainer/PanelContainer/MarginContainer/HBoxContainer/VBoxContainer/TraitPanelContainer/VBoxContainer3/PositiveTraitsContainer"]
 layout_mode = 2
+size_flags_horizontal = 0
 theme_type_variation = &"HeaderMedium"
 theme_override_colors/font_color = Color(0.113725, 0.568627, 0.243137, 1)
 text = "Good traits"
 
-[node name="NegativeTraitsContainer" type="VBoxContainer" parent="MarginContainer/PanelContainer/MarginContainer/HBoxContainer/VBoxContainer/LeftPanelContainer/VBoxContainer3"]
+[node name="NegativeTraitsContainer" type="VBoxContainer" parent="MarginContainer/PanelContainer/MarginContainer/HBoxContainer/VBoxContainer/TraitPanelContainer/VBoxContainer3"]
 layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 4
 
-[node name="Label" type="Label" parent="MarginContainer/PanelContainer/MarginContainer/HBoxContainer/VBoxContainer/LeftPanelContainer/VBoxContainer3/NegativeTraitsContainer"]
+[node name="Label" type="Label" parent="MarginContainer/PanelContainer/MarginContainer/HBoxContainer/VBoxContainer/TraitPanelContainer/VBoxContainer3/NegativeTraitsContainer"]
 layout_mode = 2
+size_flags_horizontal = 0
 theme_type_variation = &"HeaderMedium"
 theme_override_colors/font_color = Color(0.568627, 0.141176, 0.141176, 1)
 text = "Bad traits"
 
-[node name="UnitImageUI" parent="MarginContainer/PanelContainer/MarginContainer/HBoxContainer/VBoxContainer" instance=ExtResource("3_3xt8s")]
+[node name="UnitImage" type="TextureRect" parent="MarginContainer/PanelContainer/MarginContainer/HBoxContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
+texture = ExtResource("3_t5euq")
+stretch_mode = 5
 
 [node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/PanelContainer/MarginContainer/HBoxContainer"]
 layout_mode = 2
@@ -95,10 +103,6 @@ size_flags_horizontal = 3
 [node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/PanelContainer/MarginContainer/HBoxContainer/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
-
-[node name="CurrentStrengthLabel" type="Label" parent="MarginContainer/PanelContainer/MarginContainer/HBoxContainer/HBoxContainer/VBoxContainer"]
-layout_mode = 2
-text = "Current strength: 27"
 
 [node name="BlessingInput" type="HBoxContainer" parent="MarginContainer/PanelContainer/MarginContainer/HBoxContainer/HBoxContainer/VBoxContainer"]
 layout_mode = 2
@@ -110,7 +114,11 @@ script = ExtResource("3_ro0nv")
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="Label" type="Label" parent="MarginContainer/PanelContainer/MarginContainer/HBoxContainer/HBoxContainer/VBoxContainer/BlessingInput/VBoxContainer"]
+[node name="CurrentStrengthLabel" type="Label" parent="MarginContainer/PanelContainer/MarginContainer/HBoxContainer/HBoxContainer/VBoxContainer/BlessingInput/VBoxContainer"]
+layout_mode = 2
+text = "Current strength: 27"
+
+[node name="BlessAmountLabel" type="Label" parent="MarginContainer/PanelContainer/MarginContainer/HBoxContainer/HBoxContainer/VBoxContainer/BlessingInput/VBoxContainer"]
 layout_mode = 2
 text = "Blessing for: 50
 "

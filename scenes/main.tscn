@@ -1,7 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://6pgl1pt35txy"]
+[gd_scene load_steps=8 format=3 uid="uid://6pgl1pt35txy"]
 
 [ext_resource type="PackedScene" uid="uid://dlwrtjnr6xty4" path="res://scenes/UI/BlessingUnitUI.tscn" id="1_q4qay"]
 [ext_resource type="PackedScene" uid="uid://b3llop6ts804d" path="res://scenes/GameManager.tscn" id="2_k8vnu"]
+[ext_resource type="Script" path="res://scripts/bless_results_panel_shower.gd" id="3_7vn06"]
+[ext_resource type="Script" path="res://scripts/bless_results_container.gd" id="4_8q8d7"]
 
 [sub_resource type="Gradient" id="Gradient_dvckn"]
 offsets = PackedFloat32Array(1)
@@ -10,12 +12,87 @@ colors = PackedColorArray(0.2622, 0.59018, 0.69, 1)
 [sub_resource type="GradientTexture1D" id="GradientTexture1D_mdlhv"]
 gradient = SubResource("Gradient_dvckn")
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ibkj6"]
+bg_color = Color(0, 0, 0, 0.756863)
+border_width_left = 15
+border_width_top = 15
+border_width_right = 15
+border_width_bottom = 15
+border_color = Color(0, 0, 0, 0.827451)
+corner_radius_top_left = 25
+corner_radius_top_right = 25
+corner_radius_bottom_right = 25
+corner_radius_bottom_left = 25
+expand_margin_left = 80.0
+expand_margin_top = 50.0
+expand_margin_right = 80.0
+expand_margin_bottom = 50.0
+
 [node name="Main" type="Node2D"]
 
 [node name="Background" type="Sprite2D" parent="."]
 position = Vector2(592, 344.001)
 scale = Vector2(71.6221, 10286.6)
 texture = SubResource("GradientTexture1D_mdlhv")
+metadata/_edit_lock_ = true
 
 [node name="GameManager" parent="." instance=ExtResource("2_k8vnu")]
 unit_ui_scene = ExtResource("1_q4qay")
+
+[node name="BlessingUnitUIHolder" type="Node2D" parent="."]
+
+[node name="RoundResultLayer" type="CanvasLayer" parent="."]
+script = ExtResource("3_7vn06")
+round_win_color = Color(0.247059, 0.831373, 0.278431, 1)
+round_loss_color = Color(0.831373, 0.247059, 0.247059, 1)
+
+[node name="PanelContainer" type="PanelContainer" parent="RoundResultLayer"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_styles/panel = SubResource("StyleBoxFlat_ibkj6")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="RoundResultLayer/PanelContainer"]
+layout_mode = 2
+
+[node name="RoundResultLabel" type="Label" parent="RoundResultLayer/PanelContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 3
+theme_type_variation = &"RoundResultLabel"
+theme_override_colors/font_color = Color(0.831373, 0.247059, 0.247059, 1)
+text = "Round LOSS!"
+
+[node name="BlessResultsContainer" type="VBoxContainer" parent="RoundResultLayer/PanelContainer/VBoxContainer"]
+layout_mode = 2
+script = ExtResource("4_8q8d7")
+
+[node name="TotalStrengthLabel" type="Label" parent="RoundResultLayer/PanelContainer/VBoxContainer/BlessResultsContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+text = "Total bless strength: 150"
+
+[node name="OtherBlessResultsContainer" type="VBoxContainer" parent="RoundResultLayer/PanelContainer/VBoxContainer/BlessResultsContainer"]
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="RoundResultLayer/PanelContainer/VBoxContainer/BlessResultsContainer"]
+layout_mode = 2
+theme_override_constants/margin_top = 15
+
+[node name="NextUnitButton" type="Button" parent="RoundResultLayer/PanelContainer/VBoxContainer/BlessResultsContainer/MarginContainer"]
+custom_minimum_size = Vector2(0, 60)
+layout_mode = 2
+size_flags_vertical = 8
+text = "Next unit"
+
+[connection signal="pressed" from="RoundResultLayer/PanelContainer/VBoxContainer/BlessResultsContainer/MarginContainer/NextUnitButton" to="RoundResultLayer/PanelContainer/VBoxContainer/BlessResultsContainer" method="_on_next_unit_button_pressed"]
