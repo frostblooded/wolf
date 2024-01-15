@@ -13,8 +13,8 @@ gradient = SubResource("Gradient_dvckn")
 [node name="Main" type="Node2D"]
 
 [node name="Background" type="Sprite2D" parent="."]
-position = Vector2(626, 357)
-scale = Vector2(9.63477, 1367.25)
+position = Vector2(592, 344.001)
+scale = Vector2(71.6221, 10286.6)
 texture = SubResource("GradientTexture1D_mdlhv")
 
 [node name="GameManager" parent="." instance=ExtResource("2_k8vnu")]
