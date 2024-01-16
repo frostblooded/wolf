@@ -1,9 +1,10 @@
-[gd_scene load_steps=8 format=3 uid="uid://6pgl1pt35txy"]
+[gd_scene load_steps=9 format=3 uid="uid://6pgl1pt35txy"]
 
 [ext_resource type="PackedScene" uid="uid://dlwrtjnr6xty4" path="res://scenes/UI/BlessingUnitUI.tscn" id="1_q4qay"]
 [ext_resource type="PackedScene" uid="uid://b3llop6ts804d" path="res://scenes/GameManager.tscn" id="2_k8vnu"]
 [ext_resource type="Script" path="res://scripts/bless_results_panel_shower.gd" id="3_7vn06"]
 [ext_resource type="Script" path="res://scripts/bless_results_container.gd" id="4_8q8d7"]
+[ext_resource type="Script" path="res://scripts/main_menu_button.gd" id="5_pgemp"]
 
 [sub_resource type="Gradient" id="Gradient_efd0n"]
 offsets = PackedFloat32Array(1)
@@ -101,4 +102,15 @@ layout_mode = 2
 size_flags_horizontal = 4
 text = "Win 3 times in a row to win the game"
 
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="MainMenuButton" type="Button" parent="CanvasLayer"]
+offset_left = 40.0
+offset_top = 40.0
+offset_right = 136.0
+offset_bottom = 71.0
+text = "Main menu"
+script = ExtResource("5_pgemp")
+
 [connection signal="pressed" from="RoundResultLayer/PanelContainer/VBoxContainer/BlessResultsContainer/MarginContainer/NextRoundButton" to="RoundResultLayer/PanelContainer/VBoxContainer/BlessResultsContainer" method="_on_next_unit_button_pressed"]
+[connection signal="pressed" from="CanvasLayer/MainMenuButton" to="CanvasLayer/MainMenuButton" method="_on_pressed"]
