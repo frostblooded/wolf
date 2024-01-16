@@ -33,7 +33,8 @@ func on_bless_button_pressed(bless_amount: int):
 
     total_strength += bless_amount * bless_multiplier
 
-    var won: bool = total_strength >= 90 and total_strength < 100
+    var min_goal: int = DifficultyManager.get_min_goal()
+    var won: bool = total_strength >= min_goal and total_strength <= 100
     handle_win_streak(won)
     var is_game_end: bool = win_streak == required_victory_streak_for_game_win
     round_result_panel_shower.show_bless_results(current_unit, bless_amount, total_strength, won, is_game_end, win_streak)
@@ -64,19 +65,19 @@ func generate_unit() -> Unit:
     unit.strength = randi_range(0, 80)
 
     var MIN_TRAITS: int = 1
-    var MAX_TRAITS: int = 3
-    assert(MIN_TRAITS <= MAX_TRAITS);
-    assert(possible_positive_traits.size() >= MAX_TRAITS);
-    assert(possible_negative_traits.size() >= MAX_TRAITS);
+    var max_traits: int = DifficultyManager.get_max_traits()
+    assert(MIN_TRAITS <= max_traits);
+    assert(possible_positive_traits.size() >= max_traits);
+    assert(possible_negative_traits.size() >= max_traits);
 
-    var positive_traits_amount: int = randi_range(MIN_TRAITS, MAX_TRAITS)
+    var positive_traits_amount: int = randi_range(MIN_TRAITS, max_traits)
     var positive_traits_shuffled_copy: Array[Trait] = possible_positive_traits
     positive_traits_shuffled_copy.shuffle()
 
     for i in range(0, positive_traits_amount):
         unit.positive_traits.push_back(positive_traits_shuffled_copy[i])
 
-    var negative_traits_amount: int = randi_range(MIN_TRAITS, MAX_TRAITS)
+    var negative_traits_amount: int = randi_range(MIN_TRAITS, max_traits)
     var negative_traits_shuffled_copy: Array[Trait] = possible_negative_traits
     negative_traits_shuffled_copy.shuffle()
 
