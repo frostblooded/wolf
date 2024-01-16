@@ -5,12 +5,12 @@
 [ext_resource type="Script" path="res://scripts/bless_results_panel_shower.gd" id="3_7vn06"]
 [ext_resource type="Script" path="res://scripts/bless_results_container.gd" id="4_8q8d7"]
 
-[sub_resource type="Gradient" id="Gradient_dvckn"]
+[sub_resource type="Gradient" id="Gradient_efd0n"]
 offsets = PackedFloat32Array(1)
 colors = PackedColorArray(0.2622, 0.59018, 0.69, 1)
 
 [sub_resource type="GradientTexture1D" id="GradientTexture1D_mdlhv"]
-gradient = SubResource("Gradient_dvckn")
+gradient = SubResource("Gradient_efd0n")
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ibkj6"]
 bg_color = Color(0, 0, 0, 0.756863)
@@ -43,6 +43,7 @@ unit_ui_scene = ExtResource("1_q4qay")
 
 [node name="RoundResultLayer" type="CanvasLayer" parent="."]
 script = ExtResource("3_7vn06")
+game_win_color = Color(0.831373, 0.811765, 0.247059, 1)
 round_win_color = Color(0.247059, 0.831373, 0.278431, 1)
 round_loss_color = Color(0.831373, 0.247059, 0.247059, 1)
 
@@ -89,10 +90,15 @@ layout_mode = 2
 layout_mode = 2
 theme_override_constants/margin_top = 15
 
-[node name="NextUnitButton" type="Button" parent="RoundResultLayer/PanelContainer/VBoxContainer/BlessResultsContainer/MarginContainer"]
+[node name="NextRoundButton" type="Button" parent="RoundResultLayer/PanelContainer/VBoxContainer/BlessResultsContainer/MarginContainer"]
 custom_minimum_size = Vector2(0, 60)
 layout_mode = 2
 size_flags_vertical = 8
 text = "Next unit"
 
-[connection signal="pressed" from="RoundResultLayer/PanelContainer/VBoxContainer/BlessResultsContainer/MarginContainer/NextUnitButton" to="RoundResultLayer/PanelContainer/VBoxContainer/BlessResultsContainer" method="_on_next_unit_button_pressed"]
+[node name="WinStreakReminderLabel" type="Label" parent="RoundResultLayer/PanelContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+text = "Win 3 times in a row to win the game"
+
+[connection signal="pressed" from="RoundResultLayer/PanelContainer/VBoxContainer/BlessResultsContainer/MarginContainer/NextRoundButton" to="RoundResultLayer/PanelContainer/VBoxContainer/BlessResultsContainer" method="_on_next_unit_button_pressed"]
