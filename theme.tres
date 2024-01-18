@@ -1,6 +1,39 @@
-[gd_resource type="Theme" format=3 uid="uid://bkgpk6i5s5xb1"]
+[gd_resource type="Theme" load_steps=11 format=3 uid="uid://bkgpk6i5s5xb1"]
+
+[ext_resource type="Texture2D" uid="uid://7loptyiyhnyg" path="res://aseprite/button.png" id="1_0j275"]
+[ext_resource type="Texture2D" uid="uid://dm2x8cncoyr7u" path="res://aseprite/hovered_button.png" id="2_o8ov0"]
+[ext_resource type="Texture2D" uid="uid://d1prvw7ffhilk" path="res://aseprite/hovered_huge_button.png" id="4_jjm52"]
+[ext_resource type="Texture2D" uid="uid://cmd5wlej40x1o" path="res://aseprite/huge_button.png" id="5_5065p"]
+
+[sub_resource type="SystemFont" id="SystemFont_fsg14"]
+font_names = PackedStringArray("David CLM")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_he6gw"]
+texture = ExtResource("2_o8ov0")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_pm1my"]
+texture = ExtResource("1_0j275")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_espg5"]
+texture = ExtResource("4_jjm52")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_ghnfy"]
+texture = ExtResource("5_5065p")
+
+[sub_resource type="SystemFont" id="SystemFont_hsb7c"]
+font_names = PackedStringArray("David CLM")
 
 [resource]
+Button/colors/font_color = Color(0.231373, 0.192157, 0.0431373, 1)
+Button/colors/font_disabled_color = Color(0.231373, 0.192157, 0.0431373, 1)
+Button/colors/font_hover_color = Color(0.231373, 0.192157, 0.0431373, 1)
+Button/fonts/font = SubResource("SystemFont_fsg14")
+Button/styles/hover = SubResource("StyleBoxTexture_he6gw")
+Button/styles/normal = SubResource("StyleBoxTexture_pm1my")
 HBoxContainer/constants/separation = 15
+HugeButton/base_type = &"Button"
+HugeButton/styles/hover = SubResource("StyleBoxTexture_espg5")
+HugeButton/styles/normal = SubResource("StyleBoxTexture_ghnfy")
+Label/fonts/font = SubResource("SystemFont_hsb7c")
 RoundResultLabel/base_type = &"Label"
 RoundResultLabel/font_sizes/font_size = 50
