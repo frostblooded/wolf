@@ -21,7 +21,7 @@ func on_round_end():
     hide()
     bless_results_container.clear()
 
-func show_bless_results(unit: Unit, bless_strength: float, total_strength: int, won: bool, is_game_end: bool, win_streak: int):
+func show_bless_results(unit: Unit, bless_strength: float, total_strength: float, won: bool, is_game_end: bool, win_streak: int):
     win_streak_reminder_label.text = "Win 3 times in a row to win the game (%d/3)" % win_streak
 
     if is_game_end:
