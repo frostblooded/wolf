@@ -30,7 +30,7 @@ script = ExtResource("3_6bnfs")
 name = "Has a pastor father, but hates him"
 image = ExtResource("2_sgj1t")
 add_modifier = 0
-mul_modifier = 0.5
+mul_modifier = 0.66
 
 [sub_resource type="Resource" id="Resource_oqt3y"]
 script = ExtResource("3_6bnfs")
