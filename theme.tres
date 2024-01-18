@@ -1,9 +1,11 @@
-[gd_resource type="Theme" load_steps=11 format=3 uid="uid://bkgpk6i5s5xb1"]
+[gd_resource type="Theme" load_steps=13 format=3 uid="uid://bkgpk6i5s5xb1"]
 
 [ext_resource type="Texture2D" uid="uid://7loptyiyhnyg" path="res://aseprite/button.png" id="1_0j275"]
 [ext_resource type="Texture2D" uid="uid://dm2x8cncoyr7u" path="res://aseprite/hovered_button.png" id="2_o8ov0"]
 [ext_resource type="Texture2D" uid="uid://d1prvw7ffhilk" path="res://aseprite/hovered_huge_button.png" id="4_jjm52"]
 [ext_resource type="Texture2D" uid="uid://cmd5wlej40x1o" path="res://aseprite/huge_button.png" id="5_5065p"]
+[ext_resource type="Texture2D" uid="uid://do7jfp1um33c6" path="res://aseprite/slider_grabber.png" id="5_w7dpb"]
+[ext_resource type="Texture2D" uid="uid://bn210xmp3mllu" path="res://aseprite/highlighted_slider_grabber.png" id="6_ofr6e"]
 
 [sub_resource type="SystemFont" id="SystemFont_fsg14"]
 font_names = PackedStringArray("David CLM")
@@ -32,8 +34,11 @@ Button/styles/hover = SubResource("StyleBoxTexture_he6gw")
 Button/styles/normal = SubResource("StyleBoxTexture_pm1my")
 HBoxContainer/constants/separation = 15
 HugeButton/base_type = &"Button"
+HugeButton/font_sizes/font_size = 16
 HugeButton/styles/hover = SubResource("StyleBoxTexture_espg5")
 HugeButton/styles/normal = SubResource("StyleBoxTexture_ghnfy")
 Label/fonts/font = SubResource("SystemFont_hsb7c")
 RoundResultLabel/base_type = &"Label"
 RoundResultLabel/font_sizes/font_size = 50
+VSlider/icons/grabber = ExtResource("5_w7dpb")
+VSlider/icons/grabber_highlight = ExtResource("6_ofr6e")

@@ -1,17 +1,11 @@
-[gd_scene load_steps=9 format=3 uid="uid://6pgl1pt35txy"]
+[gd_scene load_steps=8 format=3 uid="uid://6pgl1pt35txy"]
 
 [ext_resource type="PackedScene" uid="uid://dlwrtjnr6xty4" path="res://scenes/UI/BlessingUnitUI.tscn" id="1_q4qay"]
+[ext_resource type="PackedScene" uid="uid://b5x7gvbok67bw" path="res://scenes/Background.tscn" id="1_ut6st"]
 [ext_resource type="PackedScene" uid="uid://b3llop6ts804d" path="res://scenes/GameManager.tscn" id="2_k8vnu"]
 [ext_resource type="Script" path="res://scripts/bless_results_panel_shower.gd" id="3_7vn06"]
 [ext_resource type="Script" path="res://scripts/bless_results_container.gd" id="4_8q8d7"]
 [ext_resource type="Script" path="res://scripts/main_menu_button.gd" id="5_pgemp"]
-
-[sub_resource type="Gradient" id="Gradient_efd0n"]
-offsets = PackedFloat32Array(1)
-colors = PackedColorArray(0.2622, 0.59018, 0.69, 1)
-
-[sub_resource type="GradientTexture1D" id="GradientTexture1D_mdlhv"]
-gradient = SubResource("Gradient_efd0n")
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ibkj6"]
 bg_color = Color(0, 0, 0, 0.756863)
@@ -31,11 +25,7 @@ expand_margin_bottom = 50.0
 
 [node name="Main" type="Node2D"]
 
-[node name="Background" type="Sprite2D" parent="."]
-position = Vector2(592, 344.001)
-scale = Vector2(71.6221, 10286.6)
-texture = SubResource("GradientTexture1D_mdlhv")
-metadata/_edit_lock_ = true
+[node name="Background" parent="." instance=ExtResource("1_ut6st")]
 
 [node name="GameManager" parent="." instance=ExtResource("2_k8vnu")]
 unit_ui_scene = ExtResource("1_q4qay")
