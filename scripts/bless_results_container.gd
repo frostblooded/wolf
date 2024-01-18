@@ -1,6 +1,7 @@
 extends VBoxContainer
 
 @export var game_end_button_text: String = "Finish game"
+@export var trait_ui_scene: PackedScene = null
 
 @onready var next_round_button: Button = find_child("NextRoundButton")
 @onready var round_result_label: Label = find_child("RoundResultLabel")
@@ -33,13 +34,13 @@ func show_bless_results(unit: Unit, bless_strength: int, total_strength: float, 
     for t in unit.positive_traits:
         if !is_equal_approx(t.mul_modifier, 1.0):
             multiplier *= t.mul_modifier
-            append_mul_bless_result_label("%s: x%.2f" % [t.name, t.mul_modifier])
+            append_mul_trait_result_label(t, ": x%.2f" % t.mul_modifier)
             has_multipliers = true
 
     for t in unit.negative_traits:
         if !is_equal_approx(t.mul_modifier, 1.0):
             multiplier *= t.mul_modifier
-            append_mul_bless_result_label("%s: x%.2f" % [t.name, t.mul_modifier])
+            append_mul_trait_result_label(t, ": x%.2f" % t.mul_modifier)
             has_multipliers = true
 
     if !has_multipliers:
@@ -52,12 +53,12 @@ func show_bless_results(unit: Unit, bless_strength: int, total_strength: float, 
 
     for t in unit.positive_traits:
         if t.add_modifier != 0:
-            append_add_bless_result_label("%s: +%d" % [t.name, t.add_modifier])
+            append_add_trait_result_label(t, ": +%d" % t.add_modifier)
             has_additions = true
 
     for t in unit.negative_traits:
         if t.add_modifier != 0:
-            append_add_bless_result_label("%s: %d" % [t.name, t.add_modifier])
+            append_add_trait_result_label(t, ": %d" % t.add_modifier)
             has_additions = true
     
     if !has_additions:
@@ -70,10 +71,20 @@ func append_mul_bless_result_label(message: String):
     new_label.text = message
     $OtherBlessResultsContainer/MultiplicationResultsContainer.get_node("Results").add_child(new_label)
 
+func append_mul_trait_result_label(t: Trait, message: String):
+    var trait_ui: TraitUI = trait_ui_scene.instantiate()
+    trait_ui.initialize_with_additional_text(t, message)
+    $OtherBlessResultsContainer/MultiplicationResultsContainer.get_node("Results").add_child(trait_ui)
+
 func append_add_bless_result_label(message: String):
     var new_label: Label = Label.new()
     new_label.text = message
     $OtherBlessResultsContainer/AdditionResultsContainer.get_node("Results").add_child(new_label)
+
+func append_add_trait_result_label(t: Trait, message: String):
+    var trait_ui: TraitUI = trait_ui_scene.instantiate()
+    trait_ui.initialize_with_additional_text(t, message)
+    $OtherBlessResultsContainer/AdditionResultsContainer.get_node("Results").add_child(trait_ui)
 
 func append_bless_result_label(message: String):
     var new_label: Label = Label.new()

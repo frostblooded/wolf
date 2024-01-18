@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://6pgl1pt35txy"]
+[gd_scene load_steps=9 format=3 uid="uid://6pgl1pt35txy"]
 
 [ext_resource type="PackedScene" uid="uid://dlwrtjnr6xty4" path="res://scenes/UI/BlessingUnitUI.tscn" id="1_q4qay"]
 [ext_resource type="PackedScene" uid="uid://b5x7gvbok67bw" path="res://scenes/Background.tscn" id="1_ut6st"]
@@ -6,6 +6,7 @@
 [ext_resource type="Script" path="res://scripts/bless_results_panel_shower.gd" id="3_7vn06"]
 [ext_resource type="Script" path="res://scripts/bless_results_container.gd" id="4_8q8d7"]
 [ext_resource type="Script" path="res://scripts/main_menu_button.gd" id="5_pgemp"]
+[ext_resource type="PackedScene" uid="uid://ddsydqanfd6d6" path="res://scenes/UI/TraitUI.tscn" id="6_jd27q"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ibkj6"]
 bg_color = Color(0, 0, 0, 0.756863)
@@ -68,6 +69,7 @@ text = "Round LOSS!"
 [node name="BlessResultsContainer" type="VBoxContainer" parent="RoundResultLayer/PanelContainer/VBoxContainer"]
 layout_mode = 2
 script = ExtResource("4_8q8d7")
+trait_ui_scene = ExtResource("6_jd27q")
 
 [node name="OtherBlessResultsContainer" type="VBoxContainer" parent="RoundResultLayer/PanelContainer/VBoxContainer/BlessResultsContainer"]
 layout_mode = 2
@@ -90,7 +92,7 @@ size_flags_vertical = 3
 
 [node name="Label" type="Label" parent="RoundResultLayer/PanelContainer/VBoxContainer/BlessResultsContainer/OtherBlessResultsContainer/MultiplicationResultsContainer"]
 layout_mode = 2
-text = "ADDITIONS"
+text = "MULTIPLICATIONS"
 
 [node name="Results" type="VBoxContainer" parent="RoundResultLayer/PanelContainer/VBoxContainer/BlessResultsContainer/OtherBlessResultsContainer/MultiplicationResultsContainer"]
 layout_mode = 2
@@ -101,7 +103,7 @@ size_flags_vertical = 3
 
 [node name="Label" type="Label" parent="RoundResultLayer/PanelContainer/VBoxContainer/BlessResultsContainer/OtherBlessResultsContainer/AdditionResultsContainer"]
 layout_mode = 2
-text = "MULTIPLICATIONS"
+text = "ADDITIONS"
 
 [node name="Results" type="VBoxContainer" parent="RoundResultLayer/PanelContainer/VBoxContainer/BlessResultsContainer/OtherBlessResultsContainer/AdditionResultsContainer"]
 layout_mode = 2
