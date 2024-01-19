@@ -1,5 +1,5 @@
 class_name FactUI
-extends HBoxContainer
+extends Control
 
 func initialize(fact: Fact):
     $Label.text = fact.name

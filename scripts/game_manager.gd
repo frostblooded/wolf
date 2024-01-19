@@ -2,6 +2,7 @@ extends Node2D
 
 @export var unit_ui_scene: PackedScene = null
 @export var possible_facts: Array[Fact] = []
+@export var possible_unit_types: Array[UnitType] = []
 @export var required_victory_streak_for_game_win: int = 3
 
 @onready var round_result_panel_shower: CanvasLayer = get_parent().find_child("RoundResultLayer")
@@ -20,6 +21,7 @@ func _ready():
 
 func on_bless_button_pressed(bless_amount: int):
     var total_strength: float = bless_amount
+    total_strength *= current_unit.type.multiplier
 
     for fact in current_unit.facts:
         total_strength += fact.value
@@ -53,6 +55,9 @@ func show_unit():
 
 func generate_unit() -> Unit:
     var unit: Unit = Unit.new()
+
+    assert(!possible_unit_types.is_empty());
+    unit.type = possible_unit_types.pick_random()
 
     var MIN_FACTS: int = 1
     var max_facts: int = DifficultyManager.get_max_facts()

@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://scripts/fact_ui.gd" id="1_dg875"]
 [ext_resource type="Texture2D" uid="uid://bbuo3vy70oprq" path="res://icon.svg" id="2_4tmda"]
 
-[node name="TraitUI" type="HBoxContainer"]
+[node name="FactUI" type="HBoxContainer"]
 size_flags_horizontal = 0
 script = ExtResource("1_dg875")
 
@@ -14,4 +14,4 @@ expand_mode = 3
 
 [node name="Label" type="Label" parent="."]
 layout_mode = 2
-text = "Trait 1"
+text = "Unknown fact"
