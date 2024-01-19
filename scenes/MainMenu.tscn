@@ -48,7 +48,11 @@ text = "Bless You"
 [node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/MarginContainer/PanelContainer/VBoxContainer"]
 layout_mode = 2
 
-[node name="EasyButton" type="Button" parent="CanvasLayer/MarginContainer/PanelContainer/VBoxContainer/HBoxContainer"]
+[node name="EasyButtonContainer" type="VBoxContainer" parent="CanvasLayer/MarginContainer/PanelContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="EasyButton" type="Button" parent="CanvasLayer/MarginContainer/PanelContainer/VBoxContainer/HBoxContainer/EasyButtonContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_font_sizes/font_size = 60
@@ -56,14 +60,46 @@ text = "Easy"
 script = ExtResource("1_dmttn")
 start_difficulty = 0
 
-[node name="NormalButton" type="Button" parent="CanvasLayer/MarginContainer/PanelContainer/VBoxContainer/HBoxContainer"]
+[node name="Label" type="Label" parent="CanvasLayer/MarginContainer/PanelContainer/VBoxContainer/HBoxContainer/EasyButtonContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 24
+text = "Facts: 1"
+horizontal_alignment = 1
+
+[node name="Label2" type="Label" parent="CanvasLayer/MarginContainer/PanelContainer/VBoxContainer/HBoxContainer/EasyButtonContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 24
+text = "Goal: 70 to 100"
+horizontal_alignment = 1
+
+[node name="NormalButtonContainer" type="VBoxContainer" parent="CanvasLayer/MarginContainer/PanelContainer/VBoxContainer/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
+
+[node name="NormalButton" type="Button" parent="CanvasLayer/MarginContainer/PanelContainer/VBoxContainer/HBoxContainer/NormalButtonContainer"]
+layout_mode = 2
+size_flags_vertical = 3
 theme_override_font_sizes/font_size = 50
 text = "Normal"
 script = ExtResource("1_dmttn")
 
-[node name="HardButton" type="Button" parent="CanvasLayer/MarginContainer/PanelContainer/VBoxContainer/HBoxContainer"]
+[node name="Label" type="Label" parent="CanvasLayer/MarginContainer/PanelContainer/VBoxContainer/HBoxContainer/NormalButtonContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 24
+text = "Facts: 2"
+horizontal_alignment = 1
+
+[node name="Label2" type="Label" parent="CanvasLayer/MarginContainer/PanelContainer/VBoxContainer/HBoxContainer/NormalButtonContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 24
+text = "Goal: 85 to 100"
+horizontal_alignment = 1
+
+[node name="HardButtonContainer" type="VBoxContainer" parent="CanvasLayer/MarginContainer/PanelContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="HardButton" type="Button" parent="CanvasLayer/MarginContainer/PanelContainer/VBoxContainer/HBoxContainer/HardButtonContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_font_sizes/font_size = 60
@@ -71,6 +107,18 @@ text = "Hard"
 script = ExtResource("1_dmttn")
 start_difficulty = 2
 
-[connection signal="pressed" from="CanvasLayer/MarginContainer/PanelContainer/VBoxContainer/HBoxContainer/EasyButton" to="CanvasLayer/MarginContainer/PanelContainer/VBoxContainer/HBoxContainer/EasyButton" method="_on_pressed"]
-[connection signal="pressed" from="CanvasLayer/MarginContainer/PanelContainer/VBoxContainer/HBoxContainer/NormalButton" to="CanvasLayer/MarginContainer/PanelContainer/VBoxContainer/HBoxContainer/NormalButton" method="_on_pressed"]
-[connection signal="pressed" from="CanvasLayer/MarginContainer/PanelContainer/VBoxContainer/HBoxContainer/HardButton" to="CanvasLayer/MarginContainer/PanelContainer/VBoxContainer/HBoxContainer/HardButton" method="_on_pressed"]
+[node name="Label" type="Label" parent="CanvasLayer/MarginContainer/PanelContainer/VBoxContainer/HBoxContainer/HardButtonContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 24
+text = "Facts: 3"
+horizontal_alignment = 1
+
+[node name="Label2" type="Label" parent="CanvasLayer/MarginContainer/PanelContainer/VBoxContainer/HBoxContainer/HardButtonContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 24
+text = "Goal: 95 to 100"
+horizontal_alignment = 1
+
+[connection signal="pressed" from="CanvasLayer/MarginContainer/PanelContainer/VBoxContainer/HBoxContainer/EasyButtonContainer/EasyButton" to="CanvasLayer/MarginContainer/PanelContainer/VBoxContainer/HBoxContainer/EasyButtonContainer/EasyButton" method="_on_pressed"]
+[connection signal="pressed" from="CanvasLayer/MarginContainer/PanelContainer/VBoxContainer/HBoxContainer/NormalButtonContainer/NormalButton" to="CanvasLayer/MarginContainer/PanelContainer/VBoxContainer/HBoxContainer/NormalButtonContainer/NormalButton" method="_on_pressed"]
+[connection signal="pressed" from="CanvasLayer/MarginContainer/PanelContainer/VBoxContainer/HBoxContainer/HardButtonContainer/HardButton" to="CanvasLayer/MarginContainer/PanelContainer/VBoxContainer/HBoxContainer/HardButtonContainer/HardButton" method="_on_pressed"]

@@ -59,16 +59,13 @@ func generate_unit() -> Unit:
     assert(!possible_unit_types.is_empty());
     unit.type = possible_unit_types.pick_random()
 
-    var MIN_FACTS: int = 1
-    var max_facts: int = DifficultyManager.get_max_facts()
-    assert(MIN_FACTS <= max_facts);
-    assert(possible_facts.size() >= max_facts);
+    var facts_count: int = DifficultyManager.get_facts_count()
+    assert(possible_facts.size() >= facts_count);
 
-    var facts_amount: int = randi_range(MIN_FACTS, max_facts)
     var facts_shuffled_copy: Array[Fact] = possible_facts
     facts_shuffled_copy.shuffle()
 
-    for i in range(0, facts_amount):
+    for i in range(0, facts_count):
         unit.facts.push_back(facts_shuffled_copy[i])
 
     return unit
