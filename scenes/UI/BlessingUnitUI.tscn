@@ -1,7 +1,7 @@
-[gd_scene load_steps=8 format=3 uid="uid://dlwrtjnr6xty4"]
+[gd_scene load_steps=7 format=3 uid="uid://dlwrtjnr6xty4"]
 
 [ext_resource type="Script" path="res://scripts/blessing_unit_ui.gd" id="1_pou5w"]
-[ext_resource type="PackedScene" uid="uid://ddsydqanfd6d6" path="res://scenes/UI/TraitUI.tscn" id="2_3e3qa"]
+[ext_resource type="PackedScene" uid="uid://ddsydqanfd6d6" path="res://scenes/UI/FactUI.tscn" id="2_3e3qa"]
 [ext_resource type="Script" path="res://scripts/blessing_input.gd" id="3_ro0nv"]
 [ext_resource type="Texture2D" uid="uid://c0b0sawfyqtac" path="res://aseprite/fighter.png" id="3_t5euq"]
 
@@ -17,12 +17,9 @@ corner_radius_top_right = 25
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_wbhf4"]
 
-[sub_resource type="Theme" id="Theme_bm1eu"]
-Label/font_sizes/font_size = 32
-
 [node name="BlessingUnitUI" type="CanvasLayer"]
 script = ExtResource("1_pou5w")
-trait_ui_scene = ExtResource("2_3e3qa")
+fact_ui_scene = ExtResource("2_3e3qa")
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
 anchors_preset = 15
@@ -53,45 +50,24 @@ layout_mode = 2
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="TraitPanelContainer" type="PanelContainer" parent="MarginContainer/PanelContainer/MarginContainer/HBoxContainer/VBoxContainer"]
+[node name="FactsContainerPanel" type="PanelContainer" parent="MarginContainer/PanelContainer/MarginContainer/HBoxContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 3
 size_flags_stretch_ratio = 4.0
 theme_override_styles/panel = SubResource("StyleBoxEmpty_wbhf4")
 
-[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/PanelContainer/MarginContainer/HBoxContainer/VBoxContainer/TraitPanelContainer"]
-layout_mode = 2
-size_flags_horizontal = 4
-theme = SubResource("Theme_bm1eu")
-theme_override_constants/separation = 30
-alignment = 1
-
-[node name="PositiveTraitsContainer" type="VBoxContainer" parent="MarginContainer/PanelContainer/MarginContainer/HBoxContainer/VBoxContainer/TraitPanelContainer/VBoxContainer"]
+[node name="FactsContainer" type="VBoxContainer" parent="MarginContainer/PanelContainer/MarginContainer/HBoxContainer/VBoxContainer/FactsContainerPanel"]
 layout_mode = 2
 size_flags_horizontal = 0
 size_flags_vertical = 4
 
-[node name="Label" type="Label" parent="MarginContainer/PanelContainer/MarginContainer/HBoxContainer/VBoxContainer/TraitPanelContainer/VBoxContainer/PositiveTraitsContainer"]
+[node name="Label" type="Label" parent="MarginContainer/PanelContainer/MarginContainer/HBoxContainer/VBoxContainer/FactsContainerPanel/FactsContainer"]
 layout_mode = 2
 size_flags_horizontal = 0
 theme_type_variation = &"HeaderMedium"
-theme_override_colors/font_color = Color(0.254902, 0.819608, 0.623529, 1)
 theme_override_font_sizes/font_size = 48
-text = "Good traits"
-
-[node name="NegativeTraitsContainer" type="VBoxContainer" parent="MarginContainer/PanelContainer/MarginContainer/HBoxContainer/VBoxContainer/TraitPanelContainer/VBoxContainer"]
-layout_mode = 2
-size_flags_horizontal = 0
-size_flags_vertical = 4
-
-[node name="Label" type="Label" parent="MarginContainer/PanelContainer/MarginContainer/HBoxContainer/VBoxContainer/TraitPanelContainer/VBoxContainer/NegativeTraitsContainer"]
-layout_mode = 2
-size_flags_horizontal = 0
-theme_type_variation = &"HeaderMedium"
-theme_override_colors/font_color = Color(0.819608, 0.219608, 0.219608, 1)
-theme_override_font_sizes/font_size = 48
-text = "Bad traits"
+text = "Facts"
 
 [node name="UnitImage" type="TextureRect" parent="MarginContainer/PanelContainer/MarginContainer/HBoxContainer/VBoxContainer"]
 layout_mode = 2

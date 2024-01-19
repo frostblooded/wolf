@@ -1,7 +1,7 @@
 extends VBoxContainer
 
 @export var game_end_button_text: String = "Finish game"
-@export var trait_ui_scene: PackedScene = null
+@export var fact_ui_scene: PackedScene = null
 
 @onready var next_round_button: Button = find_child("NextRoundButton")
 @onready var round_result_label: Label = find_child("RoundResultLabel")
@@ -10,8 +10,7 @@ var is_game_end: bool = false
 
 func clear():
     clear_container($OtherBlessResultsContainer/GeneralResultsContainer)
-    clear_container($OtherBlessResultsContainer/MultiplicationResultsContainer)
-    clear_container($OtherBlessResultsContainer/AdditionResultsContainer)
+    clear_container($OtherBlessResultsContainer/FactsResultsContainer)
 
 func clear_container(container: Control):
     var results_container: Control = container.get_node("Results")
@@ -27,63 +26,16 @@ func show_bless_results(unit: Unit, bless_strength: int, total_strength: float, 
 
     append_bless_result_label("Blessing: %d" % bless_strength)
 
-    var multiplier: float = 1
-    var has_multipliers: bool = false
-
-    for t in unit.positive_traits:
-        if !is_equal_approx(t.mul_modifier, 1.0):
-            multiplier *= t.mul_modifier
-            append_mul_trait_result_label(t, ": x%.2f" % t.mul_modifier)
-            has_multipliers = true
-
-    for t in unit.negative_traits:
-        if !is_equal_approx(t.mul_modifier, 1.0):
-            multiplier *= t.mul_modifier
-            append_mul_trait_result_label(t, ": x%.2f" % t.mul_modifier)
-            has_multipliers = true
-
-    if has_multipliers:
-        append_mul_bless_result_label("Total multiplier: x%.2f" % multiplier)
-        append_mul_bless_result_label("Addition from multilpiers: %d x %.2f: +%.2f" % [bless_strength, multiplier, bless_strength * multiplier])
-    else:
-        append_mul_bless_result_label("None")
-
-    var has_additions: bool = false
-
-    for t in unit.positive_traits:
-        if t.add_modifier != 0:
-            append_add_trait_result_label(t, ": +%d" % t.add_modifier)
-            has_additions = true
-
-    for t in unit.negative_traits:
-        if t.add_modifier != 0:
-            append_add_trait_result_label(t, ": %d" % t.add_modifier)
-            has_additions = true
-    
-    if !has_additions:
-        append_add_bless_result_label("None")
+    for t in unit.facts:
+        if t.value != 0:
+            append_fact_result_label(t, ": %d" % t.value)
 
     $TotalStrengthLabel.text = "Final strength: %.2f (goal is %d to %d)" % [total_strength, DifficultyManager.get_min_goal(), 100]
 
-func append_mul_bless_result_label(message: String):
-    var new_label: Label = Label.new()
-    new_label.text = message
-    $OtherBlessResultsContainer/MultiplicationResultsContainer.get_node("Results").add_child(new_label)
-
-func append_mul_trait_result_label(t: Trait, message: String):
-    var trait_ui: TraitUI = trait_ui_scene.instantiate()
-    trait_ui.initialize_with_additional_text(t, message)
-    $OtherBlessResultsContainer/MultiplicationResultsContainer.get_node("Results").add_child(trait_ui)
-
-func append_add_bless_result_label(message: String):
-    var new_label: Label = Label.new()
-    new_label.text = message
-    $OtherBlessResultsContainer/AdditionResultsContainer.get_node("Results").add_child(new_label)
-
-func append_add_trait_result_label(t: Trait, message: String):
-    var trait_ui: TraitUI = trait_ui_scene.instantiate()
-    trait_ui.initialize_with_additional_text(t, message)
-    $OtherBlessResultsContainer/AdditionResultsContainer.get_node("Results").add_child(trait_ui)
+func append_fact_result_label(fact: Fact, message: String):
+    var fact_ui: FactUI = fact_ui_scene.instantiate()
+    fact_ui.initialize_with_additional_text(fact, message)
+    $OtherBlessResultsContainer/FactsResultsContainer.get_node("Results").add_child(fact_ui)
 
 func append_bless_result_label(message: String):
     var new_label: Label = Label.new()

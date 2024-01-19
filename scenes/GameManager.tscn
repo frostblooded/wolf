@@ -1,52 +1,35 @@
-[gd_scene load_steps=10 format=3 uid="uid://b3llop6ts804d"]
+[gd_scene load_steps=9 format=3 uid="uid://b3llop6ts804d"]
 
 [ext_resource type="Script" path="res://scripts/game_manager.gd" id="1_w4b1x"]
+[ext_resource type="PackedScene" uid="uid://dlwrtjnr6xty4" path="res://scenes/UI/BlessingUnitUI.tscn" id="2_m4k2v"]
 [ext_resource type="Texture2D" uid="uid://bbuo3vy70oprq" path="res://icon.svg" id="2_sgj1t"]
-[ext_resource type="Script" path="res://scripts/trait.gd" id="3_6bnfs"]
+[ext_resource type="Script" path="res://scripts/fact.gd" id="3_0frrs"]
 
-[sub_resource type="Resource" id="Resource_uay8p"]
-script = ExtResource("3_6bnfs")
-name = "Is having a good day"
+[sub_resource type="Resource" id="Resource_7gygq"]
+script = ExtResource("3_0frrs")
+name = "Optimist"
 image = ExtResource("2_sgj1t")
-add_modifier = 10
-mul_modifier = 1.0
+value = 10
 
-[sub_resource type="Resource" id="Resource_inf3w"]
-script = ExtResource("3_6bnfs")
-name = "Has a pastor father"
+[sub_resource type="Resource" id="Resource_vtpr4"]
+script = ExtResource("3_0frrs")
+name = "Pessimist"
 image = ExtResource("2_sgj1t")
-add_modifier = 0
-mul_modifier = 1.5
+value = -10
 
-[sub_resource type="Resource" id="Resource_a4kbm"]
-script = ExtResource("3_6bnfs")
-name = "Is an optimist"
+[sub_resource type="Resource" id="Resource_dn1nl"]
+script = ExtResource("3_0frrs")
+name = "Just spilled his coffee"
 image = ExtResource("2_sgj1t")
-add_modifier = 0
-mul_modifier = 2.0
+value = -20
 
-[sub_resource type="Resource" id="Resource_t1r71"]
-script = ExtResource("3_6bnfs")
-name = "Has a pastor father, but hates him"
+[sub_resource type="Resource" id="Resource_3sctg"]
+script = ExtResource("3_0frrs")
+name = "Just got lucky"
 image = ExtResource("2_sgj1t")
-add_modifier = 0
-mul_modifier = 0.66
-
-[sub_resource type="Resource" id="Resource_oqt3y"]
-script = ExtResource("3_6bnfs")
-name = "Spilled his coffee just now"
-image = ExtResource("2_sgj1t")
-add_modifier = -20
-mul_modifier = 1.0
-
-[sub_resource type="Resource" id="Resource_xxysg"]
-script = ExtResource("3_6bnfs")
-name = "Widower"
-image = ExtResource("2_sgj1t")
-add_modifier = 0
-mul_modifier = 0.7
+value = 30
 
 [node name="GameManager" type="Node2D"]
 script = ExtResource("1_w4b1x")
-possible_positive_traits = Array[ExtResource("3_6bnfs")]([SubResource("Resource_uay8p"), SubResource("Resource_inf3w"), SubResource("Resource_a4kbm")])
-possible_negative_traits = Array[ExtResource("3_6bnfs")]([SubResource("Resource_t1r71"), SubResource("Resource_oqt3y"), SubResource("Resource_xxysg")])
+unit_ui_scene = ExtResource("2_m4k2v")
+possible_facts = Array[ExtResource("3_0frrs")]([SubResource("Resource_7gygq"), SubResource("Resource_vtpr4"), SubResource("Resource_dn1nl"), SubResource("Resource_3sctg")])
