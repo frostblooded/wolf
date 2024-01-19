@@ -20,7 +20,7 @@ func _ready():
     MessageBus.BLESS_BUTTON_PRESSED.connect(on_bless_button_pressed)
 
 func on_bless_button_pressed(bless_amount: int):
-    var total_strength: float = current_unit.strength
+    var total_strength: float = 0
     var bless_multiplier: float = 1
 
     for t in current_unit.positive_traits:
@@ -62,7 +62,6 @@ func show_unit():
 
 func generate_unit() -> Unit:
     var unit: Unit = Unit.new()
-    unit.strength = randi_range(0, 80)
 
     var MIN_TRAITS: int = 1
     var max_traits: int = DifficultyManager.get_max_traits()

@@ -6,9 +6,6 @@ extends CanvasLayer
 @onready var bless_amount_slider = find_child("BlessAmountSlider")
 
 func initialize(unit: Unit):
-    var current_strength_label: Label = find_child("CurrentStrengthLabel")
-    current_strength_label.text = "Base strength: %d" % unit.strength
-
     var positive_traits_container: Control = find_child("PositiveTraitsContainer")
     var negative_traits_container: Control = find_child("NegativeTraitsContainer")
 

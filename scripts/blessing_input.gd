@@ -12,5 +12,5 @@ func _on_bless_amount_slider_value_changed(value: int):
     update_bless_amount_label(value)
 
 func update_bless_amount_label(value: int):
-    bless_amount_label.text = "Blessing for: %d" % value
+    bless_amount_label.text = "Blessing: %d" % value
 

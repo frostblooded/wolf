@@ -25,8 +25,7 @@ func show_bless_results(unit: Unit, bless_strength: int, total_strength: float, 
     if self.is_game_end:
         next_round_button.text = game_end_button_text
 
-    append_bless_result_label("Blessing for %d" % bless_strength)
-    append_bless_result_label("Base strength %d" % unit.strength)
+    append_bless_result_label("Blessing: %d" % bless_strength)
 
     var multiplier: float = 1
     var has_multipliers: bool = false
@@ -43,11 +42,11 @@ func show_bless_results(unit: Unit, bless_strength: int, total_strength: float, 
             append_mul_trait_result_label(t, ": x%.2f" % t.mul_modifier)
             has_multipliers = true
 
-    if !has_multipliers:
+    if has_multipliers:
+        append_mul_bless_result_label("Total multiplier: x%.2f" % multiplier)
+        append_mul_bless_result_label("Addition from multilpiers: %d x %.2f: +%.2f" % [bless_strength, multiplier, bless_strength * multiplier])
+    else:
         append_mul_bless_result_label("None")
-
-    append_mul_bless_result_label("Total multiplier: x%.2f" % multiplier)
-    append_mul_bless_result_label("Addition from multilpiers: %d x %.2f: +%.2f" % [bless_strength, multiplier, bless_strength * multiplier])
 
     var has_additions: bool = false
 

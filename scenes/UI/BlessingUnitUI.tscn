@@ -117,15 +117,10 @@ script = ExtResource("3_ro0nv")
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="CurrentStrengthLabel" type="Label" parent="MarginContainer/PanelContainer/MarginContainer/HBoxContainer/HBoxContainer/VBoxContainer/BlessingInput/VBoxContainer"]
-layout_mode = 2
-theme_override_font_sizes/font_size = 32
-text = "Current strength: 27"
-
 [node name="BlessAmountLabel" type="Label" parent="MarginContainer/PanelContainer/MarginContainer/HBoxContainer/HBoxContainer/VBoxContainer/BlessingInput/VBoxContainer"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 32
-text = "Blessing for: 50
+text = "Blessing: 50
 "
 
 [node name="BlessAmountSlider" type="VSlider" parent="MarginContainer/PanelContainer/MarginContainer/HBoxContainer/HBoxContainer/VBoxContainer/BlessingInput/VBoxContainer"]
