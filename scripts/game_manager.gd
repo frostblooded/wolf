@@ -30,7 +30,7 @@ func on_bless_button_pressed(bless_amount: int):
     var won: bool = total_strength >= min_goal and total_strength <= 100
     handle_win_streak(won)
     var is_game_end: bool = win_streak == required_victory_streak_for_game_win
-    round_result_panel_shower.show_bless_results(current_unit, bless_amount, total_strength, won, is_game_end, win_streak)
+    round_result_panel_shower.show_bless_results(current_unit, bless_amount, total_strength, won, is_game_end)
     current_unit_ui.hide()
 
 func handle_win_streak(won: bool):

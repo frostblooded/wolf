@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://bq34nd2wmlouq"]
+
+[ext_resource type="Script" path="res://scripts/fact_value_ui.gd" id="1_3xam7"]
+[ext_resource type="PackedScene" uid="uid://ddsydqanfd6d6" path="res://scenes/UI/FactUI.tscn" id="2_woic7"]
+
+[node name="FactValueUI" type="HBoxContainer"]
+size_flags_horizontal = 8
+theme_override_constants/separation = 64
+script = ExtResource("1_3xam7")
+
+[node name="FactUI" parent="." instance=ExtResource("2_woic7")]
+layout_mode = 2
+
+[node name="ValueLabel" type="Label" parent="."]
+layout_mode = 2
+size_flags_horizontal = 8
+text = "+10"
