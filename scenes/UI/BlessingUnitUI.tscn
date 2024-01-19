@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://dlwrtjnr6xty4"]
+[gd_scene load_steps=10 format=3 uid="uid://dlwrtjnr6xty4"]
 
 [ext_resource type="Script" path="res://scripts/blessing_unit_ui.gd" id="1_pou5w"]
 [ext_resource type="PackedScene" uid="uid://ddsydqanfd6d6" path="res://scenes/UI/FactUI.tscn" id="2_3e3qa"]
@@ -16,7 +16,13 @@ border_color = Color(0, 0, 0, 0.815686)
 corner_radius_top_left = 25
 corner_radius_top_right = 25
 
+[sub_resource type="Theme" id="Theme_7a33c"]
+default_font_size = 48
+
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_wbhf4"]
+
+[sub_resource type="Theme" id="Theme_sk6py"]
+default_font_size = 48
 
 [node name="BlessingUnitUI" type="CanvasLayer"]
 script = ExtResource("1_pou5w")
@@ -55,7 +61,8 @@ size_flags_horizontal = 3
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 3
-size_flags_stretch_ratio = 4.0
+size_flags_stretch_ratio = 2.0
+theme = SubResource("Theme_7a33c")
 theme_override_styles/panel = SubResource("StyleBoxEmpty_wbhf4")
 
 [node name="FactsContainer" type="VBoxContainer" parent="MarginContainer/PanelContainer/MarginContainer/HBoxContainer/VBoxContainer/FactsContainerPanel"]
@@ -73,6 +80,7 @@ text = "Facts"
 [node name="UnitTypeUI" parent="MarginContainer/PanelContainer/MarginContainer/HBoxContainer/VBoxContainer" instance=ExtResource("3_5ya5b")]
 layout_mode = 2
 size_flags_horizontal = 4
+theme = SubResource("Theme_sk6py")
 
 [node name="UnitImage" type="TextureRect" parent="MarginContainer/PanelContainer/MarginContainer/HBoxContainer/VBoxContainer"]
 layout_mode = 2
