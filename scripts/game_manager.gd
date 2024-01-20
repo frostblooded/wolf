@@ -58,7 +58,7 @@ func on_round_end():
 func show_unit():
     current_unit_ui = unit_ui_scene.instantiate() as BlessingUnitUI
     current_unit = generate_unit()
-    current_unit_ui.initialize(current_unit)
+    current_unit_ui.initialize(current_unit, win_streak)
     get_parent().get_node("BlessingUnitUIHolder").add_child.call_deferred(current_unit_ui)
 
 func generate_unit() -> Unit:
