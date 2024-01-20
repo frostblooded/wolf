@@ -122,6 +122,11 @@ theme_override_font_sizes/font_size = 32
 text = "Blessing: 50
 "
 
+[node name="BlessGoalLabel" type="Label" parent="MarginContainer/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/HBoxContainer/VBoxContainer/BlessingInput/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 20
+text = "Goal: 75 to 100"
+
 [node name="BlessAmountSlider" type="VSlider" parent="MarginContainer/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/HBoxContainer/VBoxContainer/BlessingInput/VBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 1
