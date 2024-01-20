@@ -14,4 +14,4 @@ layout_mode = 2
 [node name="ValueLabel" type="Label" parent="."]
 layout_mode = 2
 size_flags_horizontal = 8
-text = "+10"
+text = "+???"

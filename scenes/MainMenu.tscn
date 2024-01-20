@@ -56,7 +56,7 @@ size_flags_horizontal = 3
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_font_sizes/font_size = 60
-text = "Easy"
+text = "1"
 script = ExtResource("1_dmttn")
 start_difficulty = 0
 
@@ -80,13 +80,13 @@ size_flags_horizontal = 3
 layout_mode = 2
 size_flags_vertical = 3
 theme_override_font_sizes/font_size = 50
-text = "Normal"
+text = "2"
 script = ExtResource("1_dmttn")
 
 [node name="Label" type="Label" parent="CanvasLayer/MarginContainer/PanelContainer/VBoxContainer/HBoxContainer/NormalButtonContainer"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 24
-text = "Facts: 2"
+text = "Facts: 3"
 horizontal_alignment = 1
 
 [node name="Label2" type="Label" parent="CanvasLayer/MarginContainer/PanelContainer/VBoxContainer/HBoxContainer/NormalButtonContainer"]
@@ -103,20 +103,14 @@ size_flags_horizontal = 3
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_font_sizes/font_size = 60
-text = "Hard"
+text = "3"
 script = ExtResource("1_dmttn")
 start_difficulty = 2
 
 [node name="Label" type="Label" parent="CanvasLayer/MarginContainer/PanelContainer/VBoxContainer/HBoxContainer/HardButtonContainer"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 24
-text = "Facts: 3"
-horizontal_alignment = 1
-
-[node name="Label2" type="Label" parent="CanvasLayer/MarginContainer/PanelContainer/VBoxContainer/HBoxContainer/HardButtonContainer"]
-layout_mode = 2
-theme_override_font_sizes/font_size = 24
-text = "Goal: 95 to 100"
+text = "???"
 horizontal_alignment = 1
 
 [connection signal="pressed" from="CanvasLayer/MarginContainer/PanelContainer/VBoxContainer/HBoxContainer/EasyButtonContainer/EasyButton" to="CanvasLayer/MarginContainer/PanelContainer/VBoxContainer/HBoxContainer/EasyButtonContainer/EasyButton" method="_on_pressed"]

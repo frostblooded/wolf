@@ -1,12 +1,12 @@
 [gd_scene load_steps=11 format=3 uid="uid://6pgl1pt35txy"]
 
-[ext_resource type="PackedScene" uid="uid://b5x7gvbok67bw" path="res://scenes/Background.tscn" id="1_ut6st"]
-[ext_resource type="PackedScene" uid="uid://b3llop6ts804d" path="res://scenes/GameManager.tscn" id="2_k8vnu"]
-[ext_resource type="Script" path="res://scripts/bless_results_panel_shower.gd" id="3_7vn06"]
-[ext_resource type="Script" path="res://scripts/bless_results_container.gd" id="4_8q8d7"]
-[ext_resource type="Script" path="res://scripts/main_menu_button.gd" id="5_pgemp"]
-[ext_resource type="PackedScene" uid="uid://dla2errvpj32w" path="res://scenes/UI/UnitTypeUI.tscn" id="6_s8nki"]
-[ext_resource type="PackedScene" uid="uid://bq34nd2wmlouq" path="res://scenes/UI/FactValueUI.tscn" id="6_xdr73"]
+[ext_resource type="PackedScene" uid="uid://b5x7gvbok67bw" path="res://scenes/Background.tscn" id="1_3pg3h"]
+[ext_resource type="PackedScene" uid="uid://b3llop6ts804d" path="res://scenes/GameManager.tscn" id="2_uo1g6"]
+[ext_resource type="Script" path="res://scripts/bless_results_panel_shower.gd" id="3_v2l1l"]
+[ext_resource type="Script" path="res://scripts/bless_results_container.gd" id="4_1hpqm"]
+[ext_resource type="PackedScene" uid="uid://bq34nd2wmlouq" path="res://scenes/UI/FactValueUI.tscn" id="5_tq30s"]
+[ext_resource type="PackedScene" uid="uid://dla2errvpj32w" path="res://scenes/UI/UnitTypeUI.tscn" id="6_xi4cx"]
+[ext_resource type="Script" path="res://scripts/main_menu_button.gd" id="7_mx28l"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ibkj6"]
 bg_color = Color(0, 0, 0, 0.756863)
@@ -20,9 +20,9 @@ corner_radius_top_right = 25
 corner_radius_bottom_right = 25
 corner_radius_bottom_left = 25
 expand_margin_left = 80.0
-expand_margin_top = 50.0
+expand_margin_top = 25.0
 expand_margin_right = 80.0
-expand_margin_bottom = 20.0
+expand_margin_bottom = 10.0
 
 [sub_resource type="Theme" id="Theme_qcnw4"]
 default_font_size = 32
@@ -32,14 +32,14 @@ default_font_size = 32
 
 [node name="Main" type="Node2D"]
 
-[node name="Background" parent="." instance=ExtResource("1_ut6st")]
+[node name="Background" parent="." instance=ExtResource("1_3pg3h")]
 
-[node name="GameManager" parent="." instance=ExtResource("2_k8vnu")]
+[node name="GameManager" parent="." instance=ExtResource("2_uo1g6")]
 
 [node name="BlessingUnitUIHolder" type="Node2D" parent="."]
 
 [node name="RoundResultLayer" type="CanvasLayer" parent="."]
-script = ExtResource("3_7vn06")
+script = ExtResource("3_v2l1l")
 game_win_color = Color(0.831373, 0.811765, 0.247059, 1)
 round_win_color = Color(0.247059, 0.831373, 0.278431, 1)
 round_loss_color = Color(0.831373, 0.247059, 0.247059, 1)
@@ -50,10 +50,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -20.0
-offset_top = -20.0
-offset_right = 20.0
-offset_bottom = 20.0
+offset_left = -317.5
+offset_top = -218.5
+offset_right = 317.5
+offset_bottom = 218.5
 grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 4
@@ -62,9 +62,9 @@ theme_override_styles/panel = SubResource("StyleBoxFlat_ibkj6")
 
 [node name="BlessResultsContainer" type="VBoxContainer" parent="RoundResultLayer/PanelContainer"]
 layout_mode = 2
-theme_override_constants/separation = 32
-script = ExtResource("4_8q8d7")
-fact_value_ui_scene = ExtResource("6_xdr73")
+theme_override_constants/separation = 24
+script = ExtResource("4_1hpqm")
+fact_value_ui_scene = ExtResource("5_tq30s")
 
 [node name="RoundResultLabel" type="Label" parent="RoundResultLayer/PanelContainer/BlessResultsContainer"]
 layout_mode = 2
@@ -90,7 +90,7 @@ text = "Blessing"
 layout_mode = 2
 size_flags_horizontal = 4
 
-[node name="UnitTypeUI" parent="RoundResultLayer/PanelContainer/BlessResultsContainer/UnitTypeBlessingContainer" instance=ExtResource("6_s8nki")]
+[node name="UnitTypeUI" parent="RoundResultLayer/PanelContainer/BlessResultsContainer/UnitTypeBlessingContainer" instance=ExtResource("6_xi4cx")]
 layout_mode = 2
 
 [node name="_Filler2" type="Label" parent="RoundResultLayer/PanelContainer/BlessResultsContainer/UnitTypeBlessingContainer"]
@@ -158,7 +158,7 @@ offset_top = 40.0
 offset_right = 136.0
 offset_bottom = 71.0
 text = "Main menu"
-script = ExtResource("5_pgemp")
+script = ExtResource("7_mx28l")
 
 [connection signal="pressed" from="RoundResultLayer/PanelContainer/BlessResultsContainer/MarginContainer/NextRoundButton" to="RoundResultLayer/PanelContainer/BlessResultsContainer" method="_on_next_round_button_pressed"]
 [connection signal="pressed" from="CanvasLayer/MainMenuButton" to="CanvasLayer/MainMenuButton" method="_on_pressed"]

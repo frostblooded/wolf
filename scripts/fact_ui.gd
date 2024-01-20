@@ -2,9 +2,9 @@ class_name FactUI
 extends Control
 
 func initialize(fact: Fact):
-    $Label.text = fact.name
-    $TextureRect.texture = fact.image
+	$Label.text = fact.name
+	$TextureRect.texture = fact.image
 
 func initialize_with_additional_text(fact: Fact, text: String):
-    $Label.text = fact.name + text
-    $TextureRect.texture = fact.image
+	$Label.text = fact.name + text
+	$TextureRect.texture = fact.image

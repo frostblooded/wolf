@@ -10,7 +10,7 @@ var min_goals_per_difficulty: Dictionary = {
 
 var facts_count_per_difficulty: Dictionary = {
     Difficulty.EASY: 1,
-    Difficulty.NORMAL: 2,
+    Difficulty.NORMAL: 3,
     Difficulty.HARD: 3,
 }
 
