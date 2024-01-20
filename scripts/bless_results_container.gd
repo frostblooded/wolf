@@ -34,6 +34,8 @@ func append_fact_value_ui(fact: Fact):
     $FactsContainer.add_child(fact_value_ui)
 
 func _on_next_round_button_pressed():
+    SoundFx.play_select_sfx()
+
     if is_game_end:
         MessageBus.GAME_END.emit()
     else:

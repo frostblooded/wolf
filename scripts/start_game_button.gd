@@ -6,3 +6,4 @@ var game_scene: PackedScene = load("res://scenes/Main.tscn")
 func _on_pressed():
     DifficultyManager.current_difficulty = start_difficulty
     get_tree().change_scene_to_packed(game_scene)
+    SoundFx.play_select_sfx()

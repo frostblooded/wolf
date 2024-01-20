@@ -1,0 +1,27 @@
+[gd_scene load_steps=7 format=3 uid="uid://dn6ghktkudmhj"]
+
+[ext_resource type="Script" path="res://scripts/sound_fx.gd" id="1_cm3mr"]
+[ext_resource type="AudioStream" uid="uid://bw3u2ah0d2kbl" path="res://sounds/bless.mp3" id="1_dl5y1"]
+[ext_resource type="AudioStream" uid="uid://b1x3ci4nninm3" path="res://sounds/fail.mp3" id="2_ha101"]
+[ext_resource type="AudioStream" uid="uid://bhbc231hb5ecc" path="res://sounds/select.mp3" id="3_fuf36"]
+[ext_resource type="AudioStream" uid="uid://cprimy4tgpm8i" path="res://sounds/success.mp3" id="5_kpc8e"]
+[ext_resource type="AudioStream" uid="uid://bl8cw1x5461bn" path="res://sounds/game_win.mp3" id="6_kn13h"]
+
+[node name="SoundFx" type="Node2D"]
+script = ExtResource("1_cm3mr")
+
+[node name="BlessSFX" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("1_dl5y1")
+
+[node name="SelectSFX" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_fuf36")
+
+[node name="FailSFX" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_ha101")
+
+[node name="SuccessSFX" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_kpc8e")
+
+[node name="GameWinSFX" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("6_kn13h")
+volume_db = 5.0

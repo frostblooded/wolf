@@ -7,6 +7,7 @@ func _ready():
 
 func _on_button_pressed():
     MessageBus.BLESS_BUTTON_PRESSED.emit($VBoxContainer/BlessAmountSlider.value)
+    SoundFx.play_bless_sfx()
 
 func _on_bless_amount_slider_value_changed(value: int):
     update_bless_amount_label(value)
