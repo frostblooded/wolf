@@ -29,7 +29,6 @@ func _process(_delta):
 
     if !is_equal_approx(autocomplete_seconds, 0):
         var seconds_since_last_interact: float = Time.get_unix_time_from_system() - last_interact_time
-        print("Seconds since last interact: %.2f" % seconds_since_last_interact)
 
         if seconds_since_last_interact >= autocomplete_seconds:
             var bless_context: BlessContext = BlessContext.new()

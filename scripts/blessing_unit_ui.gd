@@ -28,6 +28,7 @@ func initialize(unit: Unit, wins_in_a_row: int):
 			find_child("BlessingInput").autocomplete_seconds = unit.anomaly.seconds_for_autocompletion
 	
 	if unit.type == null:
+		find_child("BlessGoalLabel").hide()
 		find_child("UnitTypeUI").hide()
 	else:
 		find_child("UnitTypeUI").initialize(unit.type)
