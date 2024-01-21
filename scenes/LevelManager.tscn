@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=3 uid="uid://f41wcuhvrl3p"]
+[gd_scene load_steps=21 format=3 uid="uid://f41wcuhvrl3p"]
 
 [ext_resource type="Script" path="res://scripts/autoload/level_manager.gd" id="1_j0s2a"]
 [ext_resource type="Texture2D" uid="uid://bbuo3vy70oprq" path="res://icon.svg" id="2_a2pqs"]
@@ -20,17 +20,11 @@ name = "Spilled his coffee"
 image = ExtResource("2_a2pqs")
 value = -20
 
-[sub_resource type="Resource" id="Resource_xx7r0"]
-script = ExtResource("3_axcaj")
-name = "Just got lucky"
-image = ExtResource("2_a2pqs")
-value = 30
-
 [sub_resource type="Resource" id="Resource_1wp4c"]
 script = ExtResource("3_axcaj")
 name = "Ate a nice fruit"
 image = ExtResource("2_a2pqs")
-value = 15
+value = 5
 
 [sub_resource type="Resource" id="Resource_dei7d"]
 script = ExtResource("3_axcaj")
@@ -42,19 +36,13 @@ value = 37
 script = ExtResource("3_axcaj")
 name = "Became a parent"
 image = ExtResource("2_a2pqs")
-value = 25
-
-[sub_resource type="Resource" id="Resource_pen4i"]
-script = ExtResource("3_axcaj")
-name = "Passed his exam"
-image = ExtResource("2_a2pqs")
-value = 7
+value = 20
 
 [sub_resource type="Resource" id="Resource_w1hci"]
 script = ExtResource("3_axcaj")
 name = "Is sick"
 image = ExtResource("2_a2pqs")
-value = -34
+value = -14
 
 [sub_resource type="Resource" id="Resource_v7lhx"]
 script = ExtResource("4_7ltci")
@@ -82,13 +70,7 @@ multiplier = 1.5
 script = ExtResource("4_adc5s")
 name = "Christian"
 image = ExtResource("2_a2pqs")
-multiplier = 0.5
-
-[sub_resource type="Resource" id="Resource_aomk6"]
-script = ExtResource("4_adc5s")
-name = "Priest"
-image = ExtResource("2_a2pqs")
-multiplier = 1.0
+multiplier = 0.75
 
 [sub_resource type="Resource" id="Resource_oe371"]
 script = ExtResource("4_adc5s")
@@ -104,8 +86,8 @@ multiplier = 2.0
 
 [node name="LevelManager" type="Node2D"]
 script = ExtResource("1_j0s2a")
-possible_level_1_facts = Array[ExtResource("3_axcaj")]([SubResource("Resource_7oeqd"), SubResource("Resource_vfelu"), SubResource("Resource_xx7r0")])
-possible_level_2_facts = Array[ExtResource("3_axcaj")]([SubResource("Resource_1wp4c"), SubResource("Resource_dei7d"), SubResource("Resource_shymx"), SubResource("Resource_pen4i"), SubResource("Resource_w1hci")])
+possible_level_1_facts = Array[ExtResource("3_axcaj")]([SubResource("Resource_7oeqd"), SubResource("Resource_vfelu")])
+possible_level_2_facts = Array[ExtResource("3_axcaj")]([SubResource("Resource_1wp4c"), SubResource("Resource_dei7d"), SubResource("Resource_shymx"), SubResource("Resource_w1hci")])
 possible_level_3_anomalies = Array[Resource("res://scripts/anomaly.gd")]([SubResource("Resource_v7lhx"), SubResource("Resource_iwx1t"), SubResource("Resource_0hs2p")])
 possible_level_1_unit_types = Array[ExtResource("4_adc5s")]([SubResource("Resource_haxxo"), SubResource("Resource_bvc6s")])
-possible_level_2_unit_types = Array[ExtResource("4_adc5s")]([SubResource("Resource_aomk6"), SubResource("Resource_oe371"), SubResource("Resource_4nwsl")])
+possible_level_2_unit_types = Array[ExtResource("4_adc5s")]([SubResource("Resource_oe371"), SubResource("Resource_4nwsl")])

@@ -40,6 +40,7 @@ default_font_size = 32
 
 [node name="RoundResultLayer" type="CanvasLayer" parent="."]
 script = ExtResource("3_v2l1l")
+game_win_label = "You WIN the level!"
 game_win_color = Color(0.831373, 0.811765, 0.247059, 1)
 round_win_color = Color(0.247059, 0.831373, 0.278431, 1)
 round_loss_color = Color(0.831373, 0.247059, 0.247059, 1)
