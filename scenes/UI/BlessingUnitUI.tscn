@@ -1,8 +1,9 @@
-[gd_scene load_steps=10 format=3 uid="uid://dlwrtjnr6xty4"]
+[gd_scene load_steps=11 format=3 uid="uid://dlwrtjnr6xty4"]
 
 [ext_resource type="Script" path="res://scripts/blessing_unit_ui.gd" id="1_pou5w"]
 [ext_resource type="PackedScene" uid="uid://ddsydqanfd6d6" path="res://scenes/UI/FactUI.tscn" id="2_3e3qa"]
 [ext_resource type="PackedScene" uid="uid://dla2errvpj32w" path="res://scenes/UI/UnitTypeUI.tscn" id="3_5ya5b"]
+[ext_resource type="PackedScene" uid="uid://cg2x8yvbc0lkx" path="res://scenes/UI/AnomalyUI.tscn" id="3_nf517"]
 [ext_resource type="Script" path="res://scripts/blessing_input.gd" id="3_ro0nv"]
 [ext_resource type="Texture2D" uid="uid://c0b0sawfyqtac" path="res://aseprite/fighter.png" id="3_t5euq"]
 
@@ -27,6 +28,7 @@ default_font_size = 48
 [node name="BlessingUnitUI" type="CanvasLayer"]
 script = ExtResource("1_pou5w")
 fact_ui_scene = ExtResource("2_3e3qa")
+anomaly_ui_scene = ExtResource("3_nf517")
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
 anchors_preset = 15
@@ -66,6 +68,26 @@ size_flags_vertical = 3
 [node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
+
+[node name="AnomalyContainerPanel" type="PanelContainer" parent="MarginContainer/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 3
+size_flags_stretch_ratio = 2.0
+theme = SubResource("Theme_7a33c")
+theme_override_styles/panel = SubResource("StyleBoxEmpty_wbhf4")
+
+[node name="AnomalyContainer" type="VBoxContainer" parent="MarginContainer/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/AnomalyContainerPanel"]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 4
+
+[node name="Label" type="Label" parent="MarginContainer/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/AnomalyContainerPanel/AnomalyContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+theme_type_variation = &"HeaderMedium"
+theme_override_font_sizes/font_size = 48
+text = "Anomaly"
 
 [node name="FactsContainerPanel" type="PanelContainer" parent="MarginContainer/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer"]
 layout_mode = 2

@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=3 uid="uid://cg2x8yvbc0lkx"]
+
+[ext_resource type="Script" path="res://scripts/anomaly_ui.gd" id="1_p3hxn"]
+[ext_resource type="Texture2D" uid="uid://bbuo3vy70oprq" path="res://icon.svg" id="2_phd70"]
+
+[node name="AnomalyUI" type="HBoxContainer"]
+size_flags_horizontal = 0
+theme_override_constants/separation = 4
+script = ExtResource("1_p3hxn")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 2
+texture = ExtResource("2_phd70")
+expand_mode = 3
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 2
+text = "Unknown anomaly"

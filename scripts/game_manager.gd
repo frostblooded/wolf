@@ -1,8 +1,6 @@
 extends Node2D
 
 @export var unit_ui_scene: PackedScene = null
-@export var possible_facts: Array[Fact] = []
-@export var possible_unit_types: Array[UnitType] = []
 @export var required_victory_streak_for_game_win: int = 3
 
 @onready var round_result_panel_shower: CanvasLayer = get_parent().find_child("RoundResultLayer")
@@ -20,14 +18,26 @@ func _ready():
     MessageBus.BLESS_BUTTON_PRESSED.connect(on_bless_button_pressed)
 
 func on_bless_button_pressed(bless_amount: int):
-    var total_strength: float = bless_amount
-    total_strength *= current_unit.type.multiplier
+    var won: bool = false
+    var total_strength: float = 0
 
-    for fact in current_unit.facts:
-        total_strength += fact.value
+    if current_unit.type == null:
+        print(bless_amount)
+        print(current_unit.anomaly)
+        print(current_unit.anomaly.is_complete(bless_amount))
+        won = current_unit.anomaly.is_complete(bless_amount)
+    else:
+        total_strength = bless_amount
 
-    var min_goal: int = DifficultyManager.get_min_goal()
-    var won: bool = total_strength >= min_goal and total_strength <= 100
+        if current_unit.type != null:
+            total_strength *= current_unit.type.multiplier
+
+        for fact in current_unit.facts:
+            total_strength += fact.value
+
+        var min_goal: int = LevelManager.get_min_goal()
+        won = total_strength >= min_goal and total_strength <= 100
+
     handle_win_streak(won)
     var is_game_end: bool = win_streak == required_victory_streak_for_game_win
 
@@ -64,13 +74,21 @@ func show_unit():
 func generate_unit() -> Unit:
     var unit: Unit = Unit.new()
 
-    assert(!possible_unit_types.is_empty());
-    unit.type = possible_unit_types.pick_random()
+    var possible_unit_types: Array = LevelManager.get_possible_unit_types()
 
-    var facts_count: int = DifficultyManager.get_facts_count()
+    if !possible_unit_types.is_empty():
+        unit.type = possible_unit_types.pick_random()
+
+    var possible_anomalies: Array = LevelManager.get_possible_anomalies()
+
+    if !possible_anomalies.is_empty():
+        unit.anomaly = possible_anomalies.pick_random()
+
+    var possible_facts = LevelManager.get_possible_facts()
+    var facts_count: int = LevelManager.get_facts_count()
     assert(possible_facts.size() >= facts_count);
 
-    var facts_shuffled_copy: Array[Fact] = possible_facts
+    var facts_shuffled_copy = possible_facts
     facts_shuffled_copy.shuffle()
 
     for i in range(0, facts_count):
