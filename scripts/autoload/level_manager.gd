@@ -36,11 +36,11 @@ func get_possible_unit_types():
     else:
         return []
 
-func get_possible_anomalies():
+func get_anomaly(win_streak: int) -> Anomaly:
     if current_level == 3:
-        return possible_level_3_anomalies
+        return possible_level_3_anomalies[win_streak]
     else:
-        return []
+        return null
 
 func get_min_goal() -> int:
     return min_goals_per_level[current_level]

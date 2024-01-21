@@ -17,17 +17,14 @@ func _ready():
     MessageBus.GAME_END.connect(on_game_end)
     MessageBus.BLESS_BUTTON_PRESSED.connect(on_bless_button_pressed)
 
-func on_bless_button_pressed(bless_amount: int):
+func on_bless_button_pressed(context: BlessContext):
     var won: bool = false
     var total_strength: float = 0
 
     if current_unit.type == null:
-        print(bless_amount)
-        print(current_unit.anomaly)
-        print(current_unit.anomaly.is_complete(bless_amount))
-        won = current_unit.anomaly.is_complete(bless_amount)
+        won = current_unit.anomaly.is_complete(context)
     else:
-        total_strength = bless_amount
+        total_strength = context.bless_amount
 
         if current_unit.type != null:
             total_strength *= current_unit.type.multiplier
@@ -48,7 +45,7 @@ func on_bless_button_pressed(bless_amount: int):
     else:
         SoundFx.play_fail_sfx()        
 
-    round_result_panel_shower.show_bless_results(current_unit, bless_amount, total_strength, won, is_game_end)
+    round_result_panel_shower.show_bless_results(current_unit, context.bless_amount, total_strength, won, is_game_end)
     current_unit_ui.hide()
 
 func handle_win_streak(won: bool):
@@ -79,10 +76,7 @@ func generate_unit() -> Unit:
     if !possible_unit_types.is_empty():
         unit.type = possible_unit_types.pick_random()
 
-    var possible_anomalies: Array = LevelManager.get_possible_anomalies()
-
-    if !possible_anomalies.is_empty():
-        unit.anomaly = possible_anomalies.pick_random()
+    unit.anomaly = LevelManager.get_anomaly(win_streak)
 
     var possible_facts = LevelManager.get_possible_facts()
     var facts_count: int = LevelManager.get_facts_count()

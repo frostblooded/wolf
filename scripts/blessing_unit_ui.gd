@@ -23,6 +23,9 @@ func initialize(unit: Unit, wins_in_a_row: int):
 		var anomaly_ui: AnomalyUI = anomaly_ui_scene.instantiate()
 		anomaly_ui.initialize(unit.anomaly)
 		anomaly_container.add_child(anomaly_ui)
+
+		if unit.anomaly is ReadyAnomaly:
+			find_child("BlessingInput").autocomplete_seconds = unit.anomaly.seconds_for_autocompletion
 	
 	if unit.type == null:
 		find_child("UnitTypeUI").hide()

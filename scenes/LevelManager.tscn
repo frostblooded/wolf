@@ -1,10 +1,12 @@
-[gd_scene load_steps=9 format=3 uid="uid://f41wcuhvrl3p"]
+[gd_scene load_steps=13 format=3 uid="uid://f41wcuhvrl3p"]
 
 [ext_resource type="Script" path="res://scripts/autoload/level_manager.gd" id="1_j0s2a"]
 [ext_resource type="Texture2D" uid="uid://bbuo3vy70oprq" path="res://icon.svg" id="2_a2pqs"]
 [ext_resource type="Script" path="res://scripts/fact.gd" id="3_axcaj"]
 [ext_resource type="Script" path="res://scripts/funny_anomaly.gd" id="4_7ltci"]
 [ext_resource type="Script" path="res://scripts/unit_type.gd" id="4_adc5s"]
+[ext_resource type="Script" path="res://scripts/ready_anomaly.gd" id="5_i76c0"]
+[ext_resource type="Script" path="res://scripts/absolutist_anomaly.gd" id="6_op44w"]
 
 [sub_resource type="Resource" id="Resource_6bbms"]
 script = ExtResource("3_axcaj")
@@ -12,9 +14,20 @@ name = "Test"
 image = ExtResource("2_a2pqs")
 value = 15
 
-[sub_resource type="Resource" id="Resource_31p2c"]
+[sub_resource type="Resource" id="Resource_v7lhx"]
 script = ExtResource("4_7ltci")
 name = "Funny"
+image = ExtResource("2_a2pqs")
+
+[sub_resource type="Resource" id="Resource_iwx1t"]
+script = ExtResource("5_i76c0")
+seconds_for_autocompletion = 30.0
+name = "Ready"
+image = ExtResource("2_a2pqs")
+
+[sub_resource type="Resource" id="Resource_0hs2p"]
+script = ExtResource("6_op44w")
+name = "Absolutist"
 image = ExtResource("2_a2pqs")
 
 [sub_resource type="Resource" id="Resource_1h4yr"]
@@ -27,6 +40,6 @@ multiplier = 1.5
 script = ExtResource("1_j0s2a")
 possible_level_1_facts = Array[ExtResource("3_axcaj")]([SubResource("Resource_6bbms"), SubResource("Resource_6bbms"), SubResource("Resource_6bbms")])
 possible_level_2_facts = Array[ExtResource("3_axcaj")]([SubResource("Resource_6bbms"), SubResource("Resource_6bbms"), SubResource("Resource_6bbms"), SubResource("Resource_6bbms"), SubResource("Resource_6bbms")])
-possible_level_3_anomalies = Array[Resource("res://scripts/anomaly.gd")]([SubResource("Resource_31p2c")])
+possible_level_3_anomalies = Array[Resource("res://scripts/anomaly.gd")]([SubResource("Resource_v7lhx"), SubResource("Resource_iwx1t"), SubResource("Resource_0hs2p")])
 possible_level_1_unit_types = Array[ExtResource("4_adc5s")]([SubResource("Resource_1h4yr"), SubResource("Resource_1h4yr")])
 possible_level_2_unit_types = Array[ExtResource("4_adc5s")]([SubResource("Resource_1h4yr"), SubResource("Resource_1h4yr"), SubResource("Resource_1h4yr")])
